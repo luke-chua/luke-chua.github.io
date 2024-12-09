@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>My Portfolio</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="projects.html">Projects</a>
+                <a href="skills.html">Skills</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </header>
+        <main>
+            <h2>About</h2>
+            <p>Learn more about my background, education, and interests.</p>
+
+            <div id="dynamic-sections"></div>
+
+            <button id="download-resume">Download Resume</button>
+        </main>
+        <footer>
+            <p>Designed and developed by Luke Chua Marquez</p>
+            <p>CWID: 884834334</p>
+        </footer>
+    </div>
+
+    <script>
+        const sections = [
+            {
+                title: "Background",
+                content: "I lived in Japan for about 7 years and went to Kadena High School. In high school, I joined the student council and helped plan various school events like prom. At school, I also occasionally helped with IT and front office assistance."
+            },
+            {
+                title: "Education",
+                content: "Graduated from Kadena High School with a 4.37 GPA. "
+            },
+            {
+                title: "Interests",
+                content: "Interested in technology. Enjoys reading and making music"
+            }
+        ];
+
+        const dynamicSectionsContainer = document.getElementById('dynamic-sections');
+
+        sections.forEach(section => {
+            const sectionDiv = document.createElement('div');
+            sectionDiv.classList.add('section');
+            sectionDiv.innerHTML = `
+                <h3>${section.title}</h3>
+                <p>${section.content}</p>
+            `;
+            dynamicSectionsContainer.appendChild(sectionDiv);
+        });
+
+        document.getElementById('download-resume').addEventListener('click', () => {
+            const resumeUrl = 'LukeChuaMarquezResume.pdf';
+            const anchor = document.createElement('a');
+            anchor.href = resumeUrl;
+            anchor.download = 'LukeChuaMarquezResume.pdf';
+            anchor.click();
+        });
+    </script>
+</body>
+
+</html>

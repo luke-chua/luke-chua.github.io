@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>My Portfolio</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="projects.html">Projects</a>
+                <a href="skills.html">Skills</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </header>
+        <main>
+        </main>
+        <footer>
+            <p>Designed and developed by Luke Chua Marquez</p>
+            <p>CWID: 884834334</p>
+        </footer>
+    </div>
+
+    <script>
+        const bioContent = {
+            name: "Luke Chua Marquez",
+            quote: '"Making progress, not perfection"',
+            description: `Hi I am Luke, a California State University Fullerton student in my second year. 
+                          I am majoring in Computer Science since I am interested in how programs work. 
+                          In my free time, I enjoy reading and occasionally making music.`,
+            imageSrc: "Photo.jpg"
+        };
+
+        function createBioSection() {
+            const beforeHi = bioContent.description.split("Hi")[0];
+            const afterHi = bioContent.description.split("Hi")[1].trim();
+
+            const bioContainer = `
+                <div class="bio">
+                    <img src="${bioContent.imageSrc}" alt="Profile Photo">
+                    <h2>${bioContent.name}</h2>
+                    <p>${bioContent.quote}</p>
+                    <p>${beforeHi}</p>
+                    <div class="section">
+                        <p><span class="highlight-text">Hi, ${afterHi}</span></p>
+                    </div>
+                </div>
+            `;
+
+            document.querySelector('main').innerHTML = bioContainer;
+        }
+
+        createBioSection();
+    </script>
+</body>
+
+</html>

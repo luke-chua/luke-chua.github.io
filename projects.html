@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>My Portfolio</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="projects.html">Projects</a>
+                <a href="skills.html">Skills</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </header>
+        <main>
+            <h2>Projects</h2>
+            <div class="navigation">
+                <button id="prev-project">Previous</button>
+                <button id="next-project">Next</button>
+            </div>
+            <div id="project-container" class="project-section">
+            </div>
+        </main>
+        <footer>
+            <p>Designed and developed by Luke Chua Marquez</p>
+            <p>CWID: 884834334</p>
+        </footer>
+    </div>
+
+    <script>
+        // Project data
+        const projects = [
+            {
+                title: "Project 1: Sorting Algorithm Visualizer",
+                video: "demo.mp4",
+                description: "A simple visualizer to see the run-time efficiency of various sorting algorithms.",
+                language: "Python",
+                challenges: "First time using Pygame to visualizethe algorithms",
+                sourceCode: "CPSC 335 Project.zip"
+            },
+            {
+                title: "Project 2: Campus Navigation App",
+                video: "Campus Navigation Demo.mp4",
+                description: "An app that navigates the Fullerton University campus using DFS, BFS, and Dijkstra's algorithm.",
+                language: "Python",
+                challenges: "Had to intergrate multiple libraries (matlplotlib, networkx, and tkinter)",
+                sourceCode: "CPSC 335 Campus Navigation.zip"
+            },
+            {
+                title: "Project 3: Taylor Series",
+                video: "CPSC 240.mp4",
+                description: "Calculates taylor series based on user input and finds the amount of tics to get the result",
+                language: "C, ASM",
+                challenges: "Had trouble working with tics",
+                sourceCode: "assignment5.zip"
+            }
+        ];
+
+        let currentProjectIndex = 0;
+
+        const projectContainer = document.getElementById("project-container");
+
+        function renderProject(index) {
+            const project = projects[index];
+            projectContainer.innerHTML = `
+                <h3>${project.title}</h3>
+                <video width="320" height="240" controls>
+                    <source src="${project.video}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p><strong>Description:</strong> ${project.description}</p>
+                <p><strong>Languages Used:</strong> ${project.language}</p>
+                <p><strong>Challenges:</strong> ${project.challenges}</p>
+                <a href="${project.sourceCode}" download class="source-code-btn">Download Source Code</a>
+            `;
+        }
+
+        document.getElementById("prev-project").addEventListener("click", () => {
+            currentProjectIndex = (currentProjectIndex - 1 + projects.length) % projects.length;
+            renderProject(currentProjectIndex);
+        });
+
+        document.getElementById("next-project").addEventListener("click", () => {
+            currentProjectIndex = (currentProjectIndex + 1) % projects.length;
+            renderProject(currentProjectIndex);
+        });
+
+        renderProject(currentProjectIndex);
+    </script>
+</body>
+
+</html>
